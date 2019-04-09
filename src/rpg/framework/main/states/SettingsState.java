@@ -2,7 +2,6 @@ package rpg.framework.main.states;
 
 import java.awt.Graphics;
 
-import rpg.framework.main.Game;
 import rpg.framework.main.Handler;
 
 public class SettingsState extends State {

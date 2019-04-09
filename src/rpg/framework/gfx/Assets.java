@@ -15,6 +15,7 @@ public class Assets {
 	// BUFFERED IMAGE DECLARATIONS (tiles)
 	public static BufferedImage levelone, leveltwo, levelthree, levelfour, levelfive;
 	public static BufferedImage bossone, bosstwo, bossthree, bossfour, bossfive;
+	public static BufferedImage portalone, portaltwo, portalthree, portalfour, portalfive;
 	
 	public static void init() { // loads sheets and images
 		SpriteSheet sheet = new SpriteSheet(ImageLoad.loadImage("/textures/SpriteSheet.png"));
@@ -25,11 +26,21 @@ public class Assets {
 		levelthree = ImageLoad.loadImage("/textures/bgmel.jpg");
 		levelfour = ImageLoad.loadImage("/textures/bgred.jpg");
 		levelfive = ImageLoad.loadImage("/textures/bgiloveyou.jpg");
+		
+		// boss tiles
 		bossone = ImageLoad.loadImage("/textures/platformzeus.jpg");
 		bosstwo = ImageLoad.loadImage("/textures/platformsas.jpg");
 		bossthree = ImageLoad.loadImage("/textures/platformmel.jpg");
 		bossfour = ImageLoad.loadImage("/textures/platformred.jpg");
 		bossfive = ImageLoad.loadImage("/textures/platformiloveyou.jpg");
+		
+		// portal tiles
+		portalone = ImageLoad.loadImage("/textures/bgzeusportal.jpg");
+		portaltwo = ImageLoad.loadImage("/textures/bgsasportal.jpg");
+		portalthree = ImageLoad.loadImage("/textures/bgmelportal.jpg");
+		portalfour = ImageLoad.loadImage("/textures/bgredportal.jpg");
+		portalfive = ImageLoad.loadImage("/textures/bgiloveyouportal.jpg");
+		
 		
 		// Defining animation arrays/frame containers
 		player_down = new BufferedImage[4];

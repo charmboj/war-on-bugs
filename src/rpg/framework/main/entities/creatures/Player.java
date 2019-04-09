@@ -1,12 +1,10 @@
 package rpg.framework.main.entities.creatures;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import rpg.framework.gfx.Animation;
 import rpg.framework.gfx.Assets;
-import rpg.framework.main.Game;
 import rpg.framework.main.Handler;
 
 public class Player extends Creature {
@@ -41,13 +39,23 @@ public class Player extends Creature {
 		xMove = 0;
 		yMove = 0;
 		
-		if(handler.getKeyManager().up)
+		if(handler.getKeyManager().up
+				&& (int)(y + bounds.y - handler.getGameCamera().getyOffset()) > 0)
 			yMove = -speed;
-		if(handler.getKeyManager().down)
+
+		if(handler.getKeyManager().down
+				&& (int)(y + bounds.y - handler.getGameCamera().getyOffset() + height)
+				< handler.getHeight())
 			yMove = speed;
-		if(handler.getKeyManager().left)
+
+		
+		if(handler.getKeyManager().left
+				&& (int)(x + bounds.x - handler.getGameCamera().getxOffset()) > 0)
 			xMove = -speed;
-		if(handler.getKeyManager().right)
+	
+		if(handler.getKeyManager().right
+				&& (int)(x + bounds.x - handler.getGameCamera().getxOffset() + width)
+				< handler.getWidth())
 			xMove = speed;
 		
 		move();

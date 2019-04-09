@@ -3,13 +3,10 @@ package rpg.framework.main;
 import java.awt.*;
 
 import java.awt.image.BufferStrategy; // makes computer draw on screen
-import java.awt.image.BufferedImage;
 
 import rpg.framework.display.*;
 import rpg.framework.gfx.Assets;
 import rpg.framework.gfx.GameCamera;
-import rpg.framework.gfx.ImageLoad;
-import rpg.framework.gfx.SpriteSheet;
 import rpg.framework.main.input.KeyManager;
 import rpg.framework.main.states.*;
 
@@ -31,8 +28,7 @@ public class Game implements Runnable {
 	private Handler handler;
 	
 	//Declaring states
-	private State gameState;
-	private State mainmenuState;
+	private State gameState, mainmenuState, battleState, creditsState, settingsState;
 	
 	// taking the width and height from display
 	public Game(String title, int width, int height) {
@@ -47,8 +43,8 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keymanager);
 		Assets.init();
 		
-		gamecamera = new GameCamera(this, 0, 0);
 		handler = new Handler(this);
+		gamecamera = new GameCamera(handler, 0, 0);
 		
 		//initializing game states
 		gameState = new GameState(handler);

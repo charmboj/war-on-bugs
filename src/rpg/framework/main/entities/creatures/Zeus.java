@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 import rpg.framework.gfx.Animation;
 import rpg.framework.gfx.Assets;
-import rpg.framework.main.Game;
 import rpg.framework.main.Handler;
 
 public class Zeus extends Creature {

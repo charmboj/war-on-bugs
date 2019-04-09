@@ -10,16 +10,17 @@ import rpg.framework.main.utils.Utils;
 public class World {
 
 	private Handler handler;
-	private Game game;
 	private int width, height; // dimensions of the level/world
-	private int spawnX, spawnY; // spawn area of sprite
+	private int spawnX, spawnY; // spawn area of player
 	private int[][] tiles; // position of tiles
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		loadWorld(path);
 	}
-	
+
+	// update and render
+
 	public void update() {
 		
 	}
@@ -42,10 +43,14 @@ public class World {
 	}
 	
 	public Tile getTile(int x, int y) {
-		Tile t = Tile.tiles[tiles[x][y]];
-		if (t == null)
-			return Tile.levelone; // level one default tile if element from tile array is null
-		return t;
+		try {
+			Tile t = Tile.tiles[tiles[x][y]];
+			if(t == null)
+				return Tile.levelone; // level one default tile if element from tile array is null
+			return t;
+		} catch (Exception e) {
+			return Tile.levelfive;
+		}
 	}
 	
 	private void loadWorld(String path) {
@@ -62,9 +67,44 @@ public class World {
 		tiles = new int[width][height];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) +4]);
+				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
 			}
 		}
 	}
 	
+	// getters and setters
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public void setSpawnX(int spawnX) {
+		this.spawnX = spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+
+	public void setSpawnY(int spawnY) {
+		this.spawnY = spawnY;
+	}
+	
+
 }

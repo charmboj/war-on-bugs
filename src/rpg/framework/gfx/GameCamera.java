@@ -3,16 +3,17 @@
 
 package rpg.framework.gfx;
 
-import rpg.framework.main.Game;
+import rpg.framework.main.Handler;
 import rpg.framework.main.entities.Entity;
+import rpg.framework.main.tiles.Tile;
 
 public class GameCamera {
 
-	private Game game;
+	private Handler handler;
 	private float xOffset, yOffset;
 	
-	public GameCamera(Game game, float xOffset, float yOffset) {
-		this.game = game;
+	public GameCamera(Handler handler, float xOffset, float yOffset) {
+		this.handler = handler;
 		this.xOffset = xOffset;
 		this.yOffset = yOffset;
 	}
@@ -24,19 +25,18 @@ public class GameCamera {
 	
 	// Centers camera on player
 	public void centerOnEntity(Entity e) {
-		if (e.getX() >= 280 && e.getX() <= 10 * 140) {
-			xOffset = e.getX() - game.getWidth() / 2 + e.getWidth() / 2;
-		} else if (e.getX() < 280) {
+		xOffset = e.getX() - handler.getWidth() / 2 + e.getWidth() / 2;
+		if (xOffset < 0) {
 			xOffset = 0;
-		} else {
-			xOffset = 141 * 8;
+		} else if (xOffset > handler.getWorld().getWidth() * Tile.TILEWIDTH - handler.getWidth()) {
+			xOffset = handler.getWorld().getWidth() * Tile.TILEWIDTH - handler.getWidth();
 		}
-		if (e.getY() >= 180 && e.getY() <= 6 * 90) {
-			yOffset = e.getY() - game.getHeight() / 2 + e.getHeight() / 2;
-		} else if (e.getY() < 180) {
+		
+		yOffset = e.getY() - handler.getHeight() / 2 + e.getHeight() / 2;
+		if (yOffset < 0) {
 			yOffset = 0;
-		} else {
-			yOffset = 71 * 5;
+		} else if (yOffset > handler.getWorld().getHeight() * Tile.TILEHEIGHT - handler.getHeight()) {
+			yOffset = handler.getWorld().getHeight() * Tile.TILEHEIGHT - handler.getHeight();
 		}
 	
 	}
