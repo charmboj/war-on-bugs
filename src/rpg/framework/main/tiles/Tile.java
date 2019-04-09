@@ -22,9 +22,9 @@ public class Tile {
 	// boss tiles
 	public static Tile bossone = new LevelOneBossTile(5);
 	public static Tile bosstwo = new LevelTwoBossTile(6);
-	public static Tile bossthree = new LevelTwoBossTile(7);
-	public static Tile bossfour = new LevelTwoBossTile(8);
-	public static Tile bossfive = new LevelTwoBossTile(9);
+//	public static Tile bossthree = new LevelTwoBossTile(7);
+//	public static Tile bossfour = new LevelTwoBossTile(8);
+//	public static Tile bossfive = new LevelTwoBossTile(9);
 	
 	
 	// spawn tiles
