@@ -3,7 +3,6 @@ package rpg.framework.main.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import rpg.framework.main.tiles.boss.*;
 import rpg.framework.main.tiles.portals.*;
 
 public class Tile {
