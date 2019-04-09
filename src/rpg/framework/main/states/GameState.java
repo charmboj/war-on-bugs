@@ -12,10 +12,8 @@ import rpg.framework.main.worlds.World;
 
 public class GameState extends State {
 
-	private Player player;
-	private Zeus zeus;
+	public static Player player;
 	private World world;
-	private EnemyOne enemyone;
 	private Spawn spawn;
 	
 	public GameState(Handler handler) {

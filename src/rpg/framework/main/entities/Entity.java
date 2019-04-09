@@ -11,8 +11,8 @@ public abstract class Entity {
 	protected Handler handler;
 	protected float x, y;
 	protected int width, height;
-	protected Rectangle bounds;
-	
+	protected Rectangle bounds, collision;
+
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.handler = handler;
 		this.x = x;
@@ -21,6 +21,14 @@ public abstract class Entity {
 		this.height = height;
 		
 		bounds = new Rectangle(0, 0, width, height);
+	}
+		
+	public Rectangle getCollision() {
+		return collision;
+	}
+
+	public void setCollision(Rectangle collision) {
+		this.collision = collision;
 	}
 	
 	public float getX() {

@@ -1,6 +1,7 @@
 package rpg.framework.main.entities.creatures;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import rpg.framework.gfx.Animation;
@@ -15,8 +16,6 @@ public class Player extends Creature {
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 		
-		bounds.x = 0;
-		bounds.y = 0;
 		bounds.width = 60;
 		bounds.height = 90;
 		
@@ -28,6 +27,9 @@ public class Player extends Creature {
 	}
 	
 	public void update() {
+		
+		collision = new Rectangle((int)(x + bounds.x - handler.getGameCamera().getxOffset()),
+				(int)(y + bounds.y - handler.getGameCamera().getyOffset()), width, height);
 		
 		// animation update
 		playerDown.update();
@@ -82,6 +84,10 @@ public class Player extends Creature {
 			return playerRight.getCurrentFrame();
 		} else
 		return Assets.player;
+	}
+	
+	public Rectangle getBounds() {
+		return bounds;
 	}
 	
 }
